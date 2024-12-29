@@ -15,9 +15,6 @@ interface ShopContextType {
   // Add other context values if necessary
 }
 
-export const ShopContext = createContext<ShopContextType>({
-  all_product: [], // Default value
-});
 
 
 export const ShopContext = createContext<ShopContextType | undefined>(undefined);

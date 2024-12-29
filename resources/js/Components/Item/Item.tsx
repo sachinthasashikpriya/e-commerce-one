@@ -1,3 +1,4 @@
+import React from "react";
 import "./Item.css";
 
 interface ItemProps {
@@ -6,18 +7,36 @@ interface ItemProps {
     name: string; // Name of the item
     new_price: number; // New price of the item
     old_price: number; // Old price of the item
+    onAddToCart: (id: number) => void; // Function to handle "Add to Cart" action
 }
 
-export const Item = (props: ItemProps) => {
+export const Item: React.FC<ItemProps> = ({
+    id,
+    name,
+    image,
+    new_price,
+    old_price,
+    onAddToCart,
+}) => {
     return (
         <div className="item">
-            <img src={props.image} alt="" />
-            <p>{props.name}</p>
-            <div className="item-prices">
-                <div className="item-price-new">${props.new_price}</div>
-                <div className="item-price-old">${props.old_price}</div>
-            </div>
+            <img src={image} alt={name} className="item-image" />
+            <h3 className="item-name">{name}</h3>
+            <p className="item-price">
+                <span className="new-price">${new_price.toFixed(2)}</span>
+                {old_price && (
+                    <span className="old-price">${old_price.toFixed(2)}</span>
+                )}
+            </p>
+            <button
+                className="add-to-cart-button"
+                onClick={() => {
+                    onAddToCart(id); // Call the add-to-cart logic
+                    router.push(route("cart")); // Navigate to the cart page
+                }}
+            >
+                Add to Cart
+            </button>
         </div>
     );
 };
-export default Item;
