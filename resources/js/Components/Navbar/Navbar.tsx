@@ -6,7 +6,11 @@ import cart_icon from "../Frontend_Assets/cart_icon.png";
 import logo from "../Frontend_Assets/logo.png";
 import "./Navbar.css";
 
-export const Navbar: React.FC = () => {
+interface NavbarProps {
+    showAuthButtons?: boolean; // Prop to toggle Sign In and Sign Up buttons
+}
+
+export const Navbar: React.FC<NavbarProps> = ({ showAuthButtons = true }) => {
     const { url } = usePage(); // Get the current URL
     const currentPage = url.split("/")[1] || "Shop"; // Determine the current route
     //const [menu, setMenu] = useState<string>("Shop");
@@ -60,12 +64,16 @@ export const Navbar: React.FC = () => {
                 </li>
             </ul>
             <div className="nav-login-cart">
-                <Link href={route("login")}>
-                    <button>Sign In</button>
-                </Link>
-                <Link href={route("register")}>
-                    <button>Sign Up</button>
-                </Link>
+                {showAuthButtons && (
+                    <>
+                        <Link href={route("login")}>
+                            <button>Sign In</button>
+                        </Link>
+                        <Link href={route("register")}>
+                            <button>Sign Up</button>
+                        </Link>
+                    </>
+                )}
                 <Link href={route("cart")}>
                     <img src={cart_icon} alt="Cart" />
                 </Link>
