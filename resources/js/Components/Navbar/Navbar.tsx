@@ -1,5 +1,4 @@
 import { Link, usePage } from "@inertiajs/react";
-
 import React from "react";
 
 import cart_icon from "../Frontend_Assets/cart_icon.png";
@@ -15,6 +14,8 @@ export const Navbar: React.FC<NavbarProps> = ({ showAuthButtons = true }) => {
     const currentPage = url.split("/")[1] || "Shop"; // Determine the current route
     //const [menu, setMenu] = useState<string>("Shop");
 
+    const { props } = usePage();
+    const user = props.auth?.user;
     return (
         <div className="navbar">
             <div className="nav-logo">
@@ -63,17 +64,34 @@ export const Navbar: React.FC<NavbarProps> = ({ showAuthButtons = true }) => {
                     {currentPage === "kids" && <hr />}
                 </li>
             </ul>
-            <div className="nav-login-cart">
-                {showAuthButtons && (
+
+            <div>
+                {user ? (
                     <>
-                        <Link href={route("login")}>
-                            <button>Sign In</button>
-                        </Link>
-                        <Link href={route("register")}>
-                            <button>Sign Up</button>
-                        </Link>
+                        <div className="nav-login-cart">
+                            <Link
+                                href={route("logout")}
+                                method="post"
+                                as="button"
+                            >
+                                <button>Logout</button>
+                            </Link>
+                        </div>
+                    </>
+                ) : (
+                    <>
+                        <div className="nav-login-cart">
+                            <Link href={route("login")}>
+                                <button>Sign In</button>
+                            </Link>
+                            <Link href={route("register")}>
+                                <button>Sign Up</button>
+                            </Link>
+                        </div>
                     </>
                 )}
+            </div>
+            <div className="nav-login-cart">
                 <Link href={route("cart")}>
                     <img src={cart_icon} alt="Cart" />
                 </Link>

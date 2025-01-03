@@ -1,3 +1,4 @@
+import { router } from "@inertiajs/react";
 import React from "react";
 import "./Item.css";
 
@@ -24,15 +25,15 @@ export const Item: React.FC<ItemProps> = ({
             <h3 className="item-name">{name}</h3>
             <p className="item-price">
                 <span className="new-price">${new_price.toFixed(2)}</span>
-                {old_price && (
+                {/*{old_price && (
                     <span className="old-price">${old_price.toFixed(2)}</span>
-                )}
+                )}*/}
             </p>
             <button
                 className="add-to-cart-button"
                 onClick={() => {
                     onAddToCart(id); // Call the add-to-cart logic
-                    router.push(route("cart")); // Navigate to the cart page
+                    router.visit(route("cart")); // Navigate to the cart page
                 }}
             >
                 Add to Cart

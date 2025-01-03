@@ -120,18 +120,6 @@ const Cart: React.FC = () => {
                                                 </div>
 
                                                 <hr className="my-4" />
-
-                                                <div className="pt-5">
-                                                    <h6 className="mb-0">
-                                                        <a
-                                                            href="#!"
-                                                            className="text-body"
-                                                        >
-                                                            <i className="fas fa-long-arrow-alt-left me-2"></i>
-                                                            Back to shop
-                                                        </a>
-                                                    </h6>
-                                                </div>
                                             </div>
                                         </div>
                                         <div className="col-lg-4 bg-body-tertiary">
@@ -147,10 +135,6 @@ const Cart: React.FC = () => {
                                                     </h5>
                                                     <h5>€ 132.00</h5>
                                                 </div>
-
-                                                <h5 className="text-uppercase mb-3">
-                                                    Shipping
-                                                </h5>
 
                                                 <div className="mb-4 pb-2">
                                                     <select
@@ -209,7 +193,7 @@ const Cart: React.FC = () => {
                                                         handleRegisterClick
                                                     }
                                                 >
-                                                    Register
+                                                    Check out
                                                 </button>
                                             </div>
                                         </div>

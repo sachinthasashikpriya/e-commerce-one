@@ -17,8 +17,8 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+Route::get('/welcome', function () {
+    return Inertia::render('Welcome');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -32,6 +32,8 @@ Route::get('/men',[ShopCategoryController::class,'Men'])->name('men');
 Route::get('/women',[ShopCategoryController::class,'Women'])->name('women');
 Route::get('/kids',[ShopCategoryController::class,'Kids'])->name('kids');
 Route::get('/cart',[ShopCategoryController::class,'Cart'])->name('cart');
+Route::get('/',[ShopCategoryController::class,'Home'])->name('home');
+
 
 
 require __DIR__.'/auth.php';

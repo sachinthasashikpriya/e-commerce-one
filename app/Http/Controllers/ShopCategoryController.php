@@ -24,4 +24,8 @@ class ShopCategoryController extends Controller
     {
         return Inertia::render('Cart');
     }
+    public function Home()
+    {
+        return Inertia::render('Welcome');
+    }
 }
